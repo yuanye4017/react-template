@@ -1,3 +1,2 @@
-const baseURL = "/api";
-
+const baseURL = '/api'
 export default baseURL

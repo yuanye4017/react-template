@@ -1,26 +1,47 @@
 import React from 'react'
-import logo from './logo.svg'
-import '@/App.css'
+import { Button } from 'antd'
+import { PoweroffOutlined } from '@ant-design/icons'
 
-import baseURL from '@/utils/baseURL'
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      loading: false,
+      iconLoading: false
+    }
+  }
 
-function App() {
-  console.log(baseURL)
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <img alt='logo' className='App-logo' src={logo} />
-        <p>Edit <code>src/App.js</code> and save to reload.</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          rel='noopener noreferrer'
-          target='_blank'>
-              Learn React
-        </a>
-      </header>
-    </div>
-  )
+  enterLoading() {
+    this.setState({ loading: true })
+  }
+
+  enterIconLoading() {
+    this.setState({ iconLoading: true })
+  }
+
+  render() {
+    return (
+      <div>
+        <Button type='primary' loading>
+          Loading
+        </Button>
+        <Button type='primary' size='small' loading>
+          Loading
+        </Button>
+        <br />
+        <Button type='primary' loading={this.state.loading} onClick={() => this.enterLoading()}>
+          Click me!
+        </Button>
+        <Button
+          type='primary'
+          icon={<PoweroffOutlined />}
+          loading={this.state.iconLoading}
+          onClick={() => this.enterIconLoading()}>
+          Click me!
+        </Button>
+      </div>
+    )
+  }
 }
 
 export default App
