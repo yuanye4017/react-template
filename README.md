@@ -46,35 +46,39 @@ yarn add progress-bar-webpack-plugin chalk -D
 ### 第三步创建config-overrides.js的文件
 
 ```bash
-const { override, fixBabelImports, addLessLoader, addWebpackAlias, addDecoratorsLegacy } = require('customize-cra');
+const { 
+  override,
+  fixBabelImports,
+  addDecoratorsLegacy, 
+  addWebpackAlias, 
+  addWebpackPlugin 
+} = require('customize-cra');
 const path = require('path');
-function resolve(dir) {
-    return path.join(__dirname, '.', dir)
-}
+const chalk = require('chalk')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+
+const resolve = dir => path.join(__dirname, dir);
 
 module.exports = override(
-    // antd按需加载，不需要每个页面都引入“antd/dist/antd.css”了
-    fixBabelImports('import', {
-      libraryName: 'antd',
-      libraryDirectory: 'es',
-      style: true  //这里一定要写true，css和less都不行
-    }),
-    // 添加装饰器的能力
-    addDecoratorsLegacy(),
-    // 配置路径别名
-    addWebpackAlias({
-      "@": resolve("src")
-    }),
-    addLessLoader({
-      javascriptEnabled: true,
-      //下面这行很特殊，这里是更改主题的关键，这里我只更改了主色，当然还可以更改其他的，下面会详细写出。
-      modifyVars: { "@primary-color": "#f47983"}
-    }),
-    addWebpackPlugin(new ProgressBarPlugin({ // 加载进度条
-        complete: '█',
-        format: `${chalk.green('Building')} [ ${chalk.green(':bar')} ] ':msg:' ${chalk.bold('(:percent)')}`,
-        clear: true,
-    })),
-)
-
+  fixBabelImports('import', { // antd 按需加载 
+    libraryName: 'antd',
+    libraryDirectory: 'es',
+    style: true,
+  }),
+  addDecoratorsLegacy(), // 添加装饰器的能力
+  addWebpackAlias({  // 配置路径别名
+    '@': resolve('src'),
+  }),
+  addWebpackPlugin(new ProgressBarPlugin({ // 加载进度条
+    complete: '█',
+    format: `${chalk.green('Building')} [ ${chalk.green(':bar')} ] ':msg:' ${chalk.bold('(:percent)')}`,
+    clear: true,
+  })),
+  config => {  // 关闭生产环境下打包生成map文件
+    if (process.env.NODE_ENV === 'production') {
+      config.devtool = false;
+    }
+    return config;
+  },
+);
 ```
