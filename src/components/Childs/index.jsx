@@ -2,6 +2,7 @@ import React, { memo, useEffect } from 'react'
 import { renderRoutes } from 'react-router-config'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
+import './index.scss'
 
 export default memo(withRouter(function Index(props) {
   console.log(props.route.routes, 'props.route.routes')
