@@ -1,4 +1,5 @@
 import React from 'react'
+import { hot } from 'react-hot-loader/root'
 import { Provider } from 'react-redux'
 import Router from './router'
 import store from './store'
@@ -10,5 +11,6 @@ function App() {
     </Provider>
   )
 }
+const AppHot = process.env.NODE_ENV === 'development' ? hot(App) : App
 
-export default App
+export default AppHot

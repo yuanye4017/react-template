@@ -1,13 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './styles/index.scss'
-import 'normalize.css/normalize.css' // 重置css样式
 
-import App from './App'
+import 'lib-flexible'
+import 'normalize.css/normalize.css' // 重置css样式
+import './styles/index.scss'
+
+import AppHot from './App'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppHot />
   </React.StrictMode>,
   document.getElementById('root')
 )
