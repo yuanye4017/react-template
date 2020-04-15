@@ -2,7 +2,7 @@ import React, { memo, useEffect } from 'react'
 import { renderRoutes } from 'react-router-config'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
-import './index.scss'
+import style from './index.module.scss'
 
 export default memo(withRouter(function Index(props) {
   console.log(props.route.routes, 'props.route.routes')
@@ -13,11 +13,11 @@ export default memo(withRouter(function Index(props) {
   }, [props.history, props.location.pathname])
   return (
     <div>
-      <div className='secondroute'>
+      <div className={style.secondroute}>
         <Link to='/child/first'>第一个孩子</Link>
         <Link to='/child/second'>第二个孩子</Link>
       </div>
-      <div className='content'>
+      <div className={style.content}>
         {renderRoutes(props.route.routes)}
       </div>
     </div>

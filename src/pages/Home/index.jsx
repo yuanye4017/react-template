@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 import baseURL from '../../utils/baseURL'
 import { Button } from 'antd-mobile';
+import style from './index.module.scss'
 
 function Home(props) {
   console.log(_.join(['a', 'b', 'c', '-']))
@@ -14,7 +15,7 @@ function Home(props) {
     })
   }
   return (
-    <div className='App'>
+    <div className={style.home}>
       这是首页
       <Button type="primary">primary</Button>
       <button name='sfda' onClick={() => getUser()} type='button'>

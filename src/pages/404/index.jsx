@@ -1,8 +1,8 @@
 import React from 'react'
-import './index.scss'
+import style from './index.module.scss'
 function Error() {
   return (
-    <div className='error'>
+    <div className={style.error}>
         404
     </div>
   )

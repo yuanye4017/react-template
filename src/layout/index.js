@@ -3,7 +3,7 @@ import React, { memo, useEffect } from 'react'
 import { renderRoutes } from 'react-router-config'
 import { withRouter } from 'react-router-dom'
 import { Sider } from './components'
-import './index.scss'
+import style from './index.module.scss'
 
 export default memo(withRouter(function Layout(props) {
   console.log(props.route, 'props.route', props.location)
@@ -15,7 +15,7 @@ export default memo(withRouter(function Layout(props) {
   return (
     <div>
       <Sider />
-      <div className='content'>
+      <div className={style.content}>
         {
           renderRoutes(props.route.routes)
         }

@@ -75,7 +75,7 @@ module.exports = {
     addDecoratorsLegacy(), // 添加装饰器的能力
     rewiredMap(), // 关闭mapSource
     hotLoader(), // 热更新
-    dropConsole(),
+    dropConsole(), //生产环境去除console.* functions
     addWebpackAlias({ // 配置路径别名
       '@': resolve('src')
     }),
