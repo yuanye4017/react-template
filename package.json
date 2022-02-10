@@ -53,7 +53,7 @@
     "eslint-plugin-react": "^7.19.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "postcss-pxtorem": "^5.1.1",
     "progress-bar-webpack-plugin": "^2.1.0",
     "react-app-rewire-hot-loader": "^2.0.1",
